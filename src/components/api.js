@@ -12,5 +12,5 @@ async function getMemes() {
 export async function generateRandomMeme() {
   const memes = await getMemes();
   const randomMeme = memes[Math.floor(Math.random() * memes.length)];
-  console.log(randomMeme);
+  return randomMeme;
 }

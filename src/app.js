@@ -1,5 +1,6 @@
 import './app.scss';
 import { createElement, appendContent } from './lib/dom';
+//import { generateRandomMeme } from './components/api';
 
 export function app() {
   const main = createElement('main', {
