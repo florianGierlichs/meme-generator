@@ -1,6 +1,6 @@
 import './app.scss';
 import { createElement, appendContent } from './lib/dom';
-import { generateRandomMeme } from './components/api';
+import { getRandomMeme } from './components/api';
 
 export function app() {
   const main = createElement('main', {
@@ -18,7 +18,7 @@ export function app() {
 
   startButton.addEventListener('click', async () => {
     wrapper.innerHTML = '';
-    const randomMeme = await generateRandomMeme();
+    const randomMeme = await getRandomMeme();
 
     const memePicture = await createElement('img', {
       className: 'memePicture',
