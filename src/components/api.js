@@ -9,7 +9,7 @@ async function getMemes() {
   return memesImages;
 }
 
-export async function generateRandomMeme() {
+export async function getRandomMeme() {
   const memes = await getMemes();
   const randomMeme = memes[Math.floor(Math.random() * memes.length)];
   return randomMeme;
