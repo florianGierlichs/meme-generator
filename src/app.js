@@ -1,20 +1,32 @@
 import './app.scss';
 import { createElement, appendContent } from './lib/dom';
-import trollface from './assets/trollface.jpg';
+import { getRandomMeme } from './components/api';
 
 export function app() {
-  const header = createElement('header', {
-    className: 'header'
-  });
-  const logo = createElement('img', {
-    className: 'logo',
-    src: trollface
-  });
-  appendContent(header, logo);
-
   const main = createElement('main', {
     className: 'main'
   });
+  const startButton = createElement('button', {
+    className: 'startButton'
+  });
 
-  return [header, main];
+  const wrapper = createElement('div', {
+    className: 'wrapper'
+  });
+
+  appendContent(main, [startButton, wrapper]);
+
+  startButton.addEventListener('click', async () => {
+    wrapper.innerHTML = '';
+    const randomMeme = await getRandomMeme();
+
+    const memePicture = await createElement('img', {
+      className: 'memePicture',
+      src: randomMeme
+    });
+
+    appendContent(wrapper, memePicture);
+  });
+
+  return [main];
 }

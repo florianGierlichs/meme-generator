@@ -1,15 +1,31 @@
-.header {
-  height: 100px;
-  width: 100%;
-  background-color: rgb(192, 192, 139);
-}
-
-.logo {
-  height: 100px;
-}
-
 .main {
+  display: flex;
+}
+
+.startButton {
+  background-image: url(./assets/trollface.jpg);
+  background-size: cover;
+  width: 123px;
+  height: 100px;
+  margin-top: 250px;
+  margin-left: 300px;
+  margin: 250px 300px 100px 0px;
+  border-radius: 10px;
+  outline: none;
+  border: 2px solid black;
+  box-shadow: 2px 2px 5px black;
+}
+
+.startButton:active {
+  transform: translate3d(2px, 2px, 0px);
+}
+
+.wrapper {
+  width: 500px;
   height: 500px;
+  margin-top: 100px;
+}
+
+.memePicture {
   width: 100%;
-  background-color: rgb(216, 216, 172);
 }
