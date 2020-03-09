@@ -18,20 +18,28 @@ export function app() {
 
   startButton.addEventListener('click', async () => {
     wrapper.innerHTML = 'Wait, Im on the toilet';
-    const randomMeme = await getRandomMeme();
-    await waitFor(3000);
-    wrapper.classList.add('poop');
-    await waitFor(3000);
-    wrapper.innerHTML = 'OK, go!';
-    await waitFor(2000);
-    wrapper.classList.remove('poop');
-    wrapper.innerHTML = '';
-    const memePicture = await createElement('img', {
-      className: 'memePicture',
-      src: randomMeme
-    });
+    try {
+      const randomMeme = await getRandomMeme();
+      await waitFor(3000);
+      wrapper.classList.add('poop');
 
-    appendContent(wrapper, memePicture);
+      await waitFor(3000);
+      wrapper.innerHTML = 'OK, go!';
+      await waitFor(2000);
+      wrapper.classList.remove('poop');
+      wrapper.innerHTML = '';
+      const memePicture = await createElement('img', {
+        className: 'memePicture',
+        src: randomMeme
+      });
+
+      appendContent(wrapper, memePicture);
+    } catch (error) {
+      const errorMessage = createElement('div', {
+        innerText: 'Error: ' + error.message
+      });
+      appendContent(wrapper, errorMessage);
+    }
   });
 
   return [main];
