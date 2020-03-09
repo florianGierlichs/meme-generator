@@ -1,5 +1,5 @@
 import './app.scss';
-import { createElement, appendContent } from './lib/dom';
+import { createElement, appendContent, waitFor } from './lib/dom';
 import { getRandomMeme } from './components/api';
 
 export function app() {
@@ -17,9 +17,15 @@ export function app() {
   appendContent(main, [startButton, wrapper]);
 
   startButton.addEventListener('click', async () => {
-    wrapper.innerHTML = '';
+    wrapper.innerHTML = 'Wait, Im on the toilet';
     const randomMeme = await getRandomMeme();
-
+    await waitFor(3000);
+    wrapper.classList.add('poop');
+    await waitFor(3000);
+    wrapper.innerHTML = 'OK, go!';
+    await waitFor(2000);
+    wrapper.classList.remove('poop');
+    wrapper.innerHTML = '';
     const memePicture = await createElement('img', {
       className: 'memePicture',
       src: randomMeme
