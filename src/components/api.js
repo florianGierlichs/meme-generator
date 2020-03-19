@@ -10,6 +10,7 @@ async function getMemes() {
 }
 
 export async function getRandomMeme() {
+  //throw new Error('Sorry, shit got serious.');
   const memes = await getMemes();
   const randomMeme = memes[Math.floor(Math.random() * memes.length)];
   return randomMeme;
